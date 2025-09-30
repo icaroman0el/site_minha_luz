@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Meu Amor</title>
+  <title>Arte em Tons de Sol</title>
   <link rel="stylesheet" href="style.css">
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
@@ -20,10 +20,17 @@
     </p>
 
     <!-- Carrossel de Fotos -->
-    <div class="carousel-container scroll-fade">
+    <div class="carousel-container scroll-fade relative mb-4">
       <img id="photoDisplay" src="images/foto1.webp" alt="Foto do Amor">
       <button onclick="prevPhoto()" class="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 text-white px-2 py-1 rounded-full">◀</button>
       <button onclick="nextPhoto()" class="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 text-white px-2 py-1 rounded-full">▶</button>
+    </div>
+
+    <!-- Botão Dedico a Você abaixo da imagem -->
+    <div class="scroll-fade mb-6">
+      <button id="dedicationBtn" class="px-4 py-2 md:px-6 md:py-3 bg-gradient-to-r from-red-500 to-pink-600 text-white text-sm md:text-base font-bold rounded-full shadow-lg hover:scale-105 transition">
+        ✨ Aperte aqui ✨
+      </button>
     </div>
 
     <!-- Caixa de Mensagem -->
@@ -38,9 +45,9 @@
         Esse seu amor verdadeiro não é apenas um sentimento, é um lar, é paz, 
         é a certeza de que encontrei minha pessoa para sempre. EU AMO VOCÊ! ❤️
       </p>
-      <button class="px-4 py-2 md:px-6 md:py-3 bg-gradient-to-r from-red-500 to-pink-600 text-white text-sm md:text-base font-bold rounded-full shadow-lg hover:scale-105 transition">
-        ✨ Dedido a você ✨
-      </button>
+       <p class="text-gray-300 text-sm md:text-base leading-relaxed mb-5">
+        1.0 | 30/09/25
+      </p>
     </div>
 
     <!-- Contador de amor -->
@@ -80,5 +87,3 @@
   <script src="script.js"></script>
 </body>
 </html>
-
-
