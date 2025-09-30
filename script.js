@@ -31,7 +31,8 @@ const progressBar = document.getElementById("progressBar");
 const currentTimeEl = document.getElementById("currentTime");
 const totalTimeEl = document.getElementById("totalTime");
 
-function togglePlay() {
+// Play/Pause funcional
+playBtn.addEventListener("click", () => {
   if (audio.paused) {
     audio.play();
     playBtn.textContent = "⏸";
@@ -39,15 +40,30 @@ function togglePlay() {
     audio.pause();
     playBtn.textContent = "▶";
   }
-}
+});
 
+// Atualiza barra de progresso e tempo
 audio.addEventListener("timeupdate", () => {
-  const progress = (audio.currentTime / audio.duration) * 100;
+  const progress = (audio.currentTime / audio.duration) * 100 || 0;
   progressBar.style.width = progress + "%";
-  let current = Math.floor(audio.currentTime),
-    total = Math.floor(audio.duration);
-  currentTimeEl.textContent = `${Math.floor(current / 60)}:${(current % 60).toString().padStart(2, "0")}`;
-  totalTimeEl.textContent = `${Math.floor(total / 60)}:${(total % 60).toString().padStart(2, "0")}`;
+
+  const minutesCurrent = Math.floor(audio.currentTime / 60);
+  const secondsCurrent = Math.floor(audio.currentTime % 60).toString().padStart(2, "0");
+
+  const minutesTotal = Math.floor(audio.duration / 60) || 0;
+  const secondsTotal = Math.floor(audio.duration % 60).toString().padStart(2, "0");
+
+  currentTimeEl.textContent = `${minutesCurrent}:${secondsCurrent}`;
+  totalTimeEl.textContent = `${minutesTotal}:${secondsTotal}`;
+});
+
+// Torna a barra clicável para mudar a posição da música
+const progressContainer = progressBar.parentElement;
+progressContainer.addEventListener("click", (e) => {
+  const width = progressContainer.clientWidth;
+  const clickX = e.offsetX;
+  const duration = audio.duration;
+  audio.currentTime = (clickX / width) * duration;
 });
 
 // Contador de amor
@@ -67,26 +83,24 @@ updateCounter();
 // Corações
 const heartSymbols=["❤️","💖","💜","💕","🧡","💘"];
 function createHeart(){
-  const heart=document.createElement("div");
+  const heart = document.createElement("div");
   heart.classList.add("heart");
-  heart.textContent=heartSymbols[Math.floor(Math.random()*heartSymbols.length)];
-  heart.style.left=Math.random()*window.innerWidth + "px";
-  heart.style.animationDuration=(4+Math.random()*4)+"s";
-  heart.style.fontSize=(14+Math.random()*18)+"px";
+  heart.textContent = heartSymbols[Math.floor(Math.random()*heartSymbols.length)];
+  heart.style.left = Math.random() * window.innerWidth + "px";
+  heart.style.animationDuration = (4 + Math.random()*4) + "s";
+  heart.style.fontSize = (14 + Math.random()*18) + "px";
   document.body.appendChild(heart);
-  setTimeout(()=>heart.remove(),9000);
+  setTimeout(() => heart.remove(), 9000);
 }
-setInterval(createHeart,800);
+setInterval(createHeart, 800);
 
 // Scroll fade
-const scrollElements=document.querySelectorAll('.scroll-fade');
+const scrollElements = document.querySelectorAll('.scroll-fade');
 function handleScroll(){
-  const triggerBottom = window.innerHeight*0.9;
-  scrollElements.forEach(el=>{
-    if(el.getBoundingClientRect().top<triggerBottom) el.classList.add('visible');
+  const triggerBottom = window.innerHeight * 0.9;
+  scrollElements.forEach(el => {
+    if(el.getBoundingClientRect().top < triggerBottom) el.classList.add('visible');
   });
 }
-window.addEventListener('scroll',handleScroll);
+window.addEventListener('scroll', handleScroll);
 handleScroll();
-
-
