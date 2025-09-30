@@ -3,7 +3,9 @@ const photos = [
   "IMG_20250928_140236_834.webp",
   "IMG_20250928_224449_576.webp",
   "Screenshot_20250929_085013_Photos.jpg",
-  "Screenshot_20250929_085649_Photos.jpg"
+  "Screenshot_20250929_085649_Photos.jpg",
+  "Screenshot_20250929_084513_Photos.jpg",
+  "baixados.jpeg"
 ];
 let currentPhoto = 0;
 const photoDisplay = document.getElementById("photoDisplay");
@@ -161,3 +163,4 @@ function handleScroll(){
 }
 window.addEventListener('scroll', handleScroll);
 handleScroll();
+
