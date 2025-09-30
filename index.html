@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arte em Tons de Sol</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-black via-[#1a0b0f] to-black text-white overflow-x-hidden">
+
+  <main class="flex flex-col items-center justify-start px-4 py-6">
+
+    <!-- Título -->
+    <h1 class="text-3xl md:text-5xl font-bold text-center mb-2 text-red-500 drop-shadow-[0_0_10px_#ff4d4d] scroll-fade">
+      Para Minha Arte em tons de sol &lt;3
+    </h1>
+    <p class="text-gray-300 text-sm md:text-base mb-6 text-center scroll-fade">
+      Uma declaração de amor criada especialmente para você ❤️
+    </p>
+
+    <!-- Carrossel de Fotos -->
+    <div class="carousel-container scroll-fade">
+      <img id="photoDisplay" src="images/foto1.webp" alt="Foto do Amor">
+      <button onclick="prevPhoto()" class="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 text-white px-2 py-1 rounded-full">◀</button>
+      <button onclick="nextPhoto()" class="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 text-white px-2 py-1 rounded-full">▶</button>
+    </div>
+
+    <!-- Caixa de Mensagem -->
+    <div class="bg-[#0f0f0f] rounded-2xl shadow-lg p-5 md:p-8 max-w-lg text-center border border-red-900 z-10 mb-6 scroll-fade">
+      <h2 class="text-xl md:text-2xl font-bold text-yellow-300 mb-3">Minha Alma Gêmea 💕</h2>
+      <p class="text-gray-300 text-sm md:text-base leading-relaxed mb-4">
+        Arte em tons de sol &lt;3, você é a razão do meu despertar feliz e o último pensamento antes de dormir. 
+        Desde que você chegou na minha vida, cada dia se tornou mais colorido, mais doce, mais completo.
+      </p>
+      <p class="text-gray-300 text-sm md:text-base leading-relaxed mb-5">
+        Você é minha melodia favorita, meu porto seguro, minha inspiração diária. 
+        Com você descobri que o amor verdadeiro não é apenas um sentimento, é um lar, é paz, 
+        é a certeza de que encontrei minha pessoa para sempre! ❤️
+      </p>
+      <button class="px-4 py-2 md:px-6 md:py-3 bg-gradient-to-r from-red-500 to-pink-600 text-white text-sm md:text-base font-bold rounded-full shadow-lg hover:scale-105 transition">
+        ✨ Uma Surpresa Especial Para Você ✨
+      </button>
+    </div>
+
+    <!-- Contador de amor -->
+    <div class="mt-6 text-center z-10 scroll-fade">
+      <h3 class="text-lg md:text-xl font-bold text-pink-400 mb-1">⏳ Tempo que eu amo você:</h3>
+      <p id="loveCounter" class="text-xl md:text-2xl font-mono text-yellow-300"></p>
+    </div>
+
+    <!-- Player de Música -->
+    <div class="bg-[#181818] mt-8 p-4 md:p-5 rounded-xl shadow-lg w-full max-w-xs md:max-w-md flex flex-col gap-3 z-10 scroll-fade">
+      <div class="flex items-center gap-4">
+        <img id="musicCover" src="_img/Capa_de_Tribalistas_Ao_Vivo.jpg" alt="Capa do Álbum Tribalistas Ao Vivo" class="fade opacity-100">
+        <div class="flex-1">
+          <h3 id="musicTitle" class="font-semibold text-white text-sm md:text-base fade opacity-100">Um a Um (Ao Vivo)</h3>
+          <p id="musicArtist" class="text-gray-400 text-xs md:text-sm fade opacity-100">Tribalistas</p>
+        </div>
+      </div>
+      <div class="flex justify-center items-center gap-6">
+        <button onclick="prevSong()" class="text-white text-lg">⏮</button>
+        <button onclick="togglePlay()" id="playBtn" class="text-white text-xl">▶</button>
+        <button onclick="nextSong()" class="text-white text-lg">⏭</button>
+      </div>
+      <div class="mt-2">
+        <div class="w-full bg-gray-700 h-1 rounded-full">
+          <div id="progressBar" class="bg-green-500 h-1 rounded-full w-0"></div>
+        </div>
+        <div class="flex justify-between text-[10px] md:text-xs text-gray-400 mt-1">
+          <span id="currentTime">0:00</span>
+          <span id="totalTime">0:00</span>
+        </div>
+      </div>
+      <audio id="audioPlayer" src="_music/Um a Um (Ao Vivo).mp3" preload="auto"></audio>
+    </div>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
