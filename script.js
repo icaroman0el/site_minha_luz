@@ -1,7 +1,7 @@
 // Fotos
 const photos = [
-  "images/foto1.webp",
-  "images/foto2.jpg",
+  "IMG_20250928_140236_834.webp",
+  "IMG_20250928_224449_576.webp",
   "images/foto3.webp"
 ];
 let currentPhoto = 0;
@@ -87,3 +87,4 @@ function handleScroll(){
 }
 window.addEventListener('scroll',handleScroll);
 handleScroll();
+
