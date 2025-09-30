@@ -8,6 +8,9 @@ const photos = [
 let currentPhoto = 0;
 const photoDisplay = document.getElementById("photoDisplay");
 
+// Inicializa a primeira foto
+photoDisplay.src = photos[currentPhoto];
+
 function changePhoto(newIndex) {
   photoDisplay.classList.add("opacity-0");
   setTimeout(() => {
@@ -30,6 +33,74 @@ const playBtn = document.getElementById("playBtn");
 const progressBar = document.getElementById("progressBar");
 const currentTimeEl = document.getElementById("currentTime");
 const totalTimeEl = document.getElementById("totalTime");
+const dedicationBtn = document.getElementById("dedicationBtn");
+
+// Toca música, cria explosão de corações e onda ao clicar no botão
+dedicationBtn.addEventListener("click", () => {
+  audio.play();
+  playBtn.textContent = "⏸";
+  createFullScreenHeartExplosion();
+  createWaveEffect();
+});
+
+// Função para explosão de corações
+function createFullScreenHeartExplosion() {
+  const heartSymbols = ["❤️","💖","💜","💕","🧡","💘"];
+  for (let i = 0; i < 50; i++) {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.textContent = heartSymbols[Math.floor(Math.random() * heartSymbols.length)];
+    heart.style.position = "fixed";
+    heart.style.left = Math.random() * window.innerWidth + "px";
+    heart.style.top = Math.random() * window.innerHeight + "px";
+    heart.style.fontSize = (16 + Math.random() * 24) + "px";
+    heart.style.zIndex = 1000;
+    heart.style.pointerEvents = "none";
+    heart.style.opacity = 1;
+
+    document.body.appendChild(heart);
+
+    // Movimento aleatório
+    const xMove = (Math.random() - 0.5) * 200;
+    const yMove = - (100 + Math.random() * 200);
+    const rotation = Math.random() * 360;
+
+    heart.animate([
+      { transform: `translate(0,0) rotate(0deg)`, opacity: 1 },
+      { transform: `translate(${xMove}px, ${yMove}px) rotate(${rotation}deg)`, opacity: 0 }
+    ], {
+      duration: 1500 + Math.random() * 500,
+      easing: "ease-out",
+      fill: "forwards"
+    });
+
+    setTimeout(() => heart.remove(), 2000);
+  }
+}
+
+// Função para efeito de onda
+function createWaveEffect() {
+  const wave = document.createElement("div");
+  wave.classList.add("wave-effect");
+  document.body.appendChild(wave);
+
+  const size = Math.max(window.innerWidth, window.innerHeight) * 2;
+  wave.style.width = size + "px";
+  wave.style.height = size + "px";
+  wave.style.left = (window.innerWidth / 2 - size / 2) + "px";
+  wave.style.top = (window.innerHeight / 2 - size / 2) + "px";
+
+  wave.animate([
+    { transform: "scale(0)", opacity: 0.5 },
+    { transform: "scale(1)", opacity: 0 }
+  ], {
+    duration: 800,
+    easing: "ease-out",
+    fill: "forwards"
+  });
+
+  setTimeout(() => wave.remove(), 800);
+}
 
 // Play/Pause funcional
 playBtn.addEventListener("click", () => {
@@ -57,7 +128,7 @@ audio.addEventListener("timeupdate", () => {
   totalTimeEl.textContent = `${minutesTotal}:${secondsTotal}`;
 });
 
-// Torna a barra clicável para mudar a posição da música
+// Torna a barra clicável
 const progressContainer = progressBar.parentElement;
 progressContainer.addEventListener("click", (e) => {
   const width = progressContainer.clientWidth;
@@ -80,20 +151,6 @@ function updateCounter(){
 setInterval(updateCounter, 1000);
 updateCounter();
 
-// Corações
-const heartSymbols=["❤️","💖","💜","💕","🧡","💘"];
-function createHeart(){
-  const heart = document.createElement("div");
-  heart.classList.add("heart");
-  heart.textContent = heartSymbols[Math.floor(Math.random()*heartSymbols.length)];
-  heart.style.left = Math.random() * window.innerWidth + "px";
-  heart.style.animationDuration = (4 + Math.random()*4) + "s";
-  heart.style.fontSize = (14 + Math.random()*18) + "px";
-  document.body.appendChild(heart);
-  setTimeout(() => heart.remove(), 9000);
-}
-setInterval(createHeart, 800);
-
 // Scroll fade
 const scrollElements = document.querySelectorAll('.scroll-fade');
 function handleScroll(){
@@ -104,4 +161,3 @@ function handleScroll(){
 }
 window.addEventListener('scroll', handleScroll);
 handleScroll();
-
