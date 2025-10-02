@@ -140,7 +140,7 @@ progressContainer.addEventListener("click", (e) => {
 });
 
 // Contador de amor
-const startDate = new Date("2025-07-26T00:00:00");
+const startDate = new Date("2025-07-24T00:00:00");
 const counterElement = document.getElementById("loveCounter");
 function updateCounter(){
   const now = new Date(), diff = now - startDate;
@@ -163,4 +163,5 @@ function handleScroll(){
 }
 window.addEventListener('scroll', handleScroll);
 handleScroll();
+
 
