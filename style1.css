@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+@keyframes fall {
+  0% { transform: translateY(-10%); opacity: 1; }
+  100% { transform: translateY(110vh); opacity: 0; }
+}
+
+.topo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background: linear-gradient(to right, #ff0055, #7a0044);
+  box-shadow: 0 0 20px rgba(255, 0, 85, 0.3);
+}
+
+.topo h1 {
+  font-size: 1.6em;
+  text-shadow: 0 0 8px #ff4b8b;
+}
+
+.voltar {
+  background: #ff4b8b;
+  color: #fff;
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+
+.voltar:hover {
+  background: #ff94c6;
+  box-shadow: 0 0 10px #ff4b8b;
+}
+.heart {
+  position: fixed;
+  animation: fall linear infinite;
+  opacity: 0.85;
+  pointer-events: none;
+  z-index: 1000;
+}
+
+/* Fade para fotos e player */
+.fade {
+  transition: opacity 0.5s ease-in-out;
+}
+.opacity-0 { opacity: 0; }
+.opacity-100 { opacity: 1; }
+
+/* Corpo da página */
+body {
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  margin: 0;
+  padding: 0;
+}
+
+/* Scroll fade ao aparecer */
+.scroll-fade {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.8s ease-out;
+}
+.scroll-fade.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Carrossel de fotos */
+.carousel-container {
+  width: 100%;
+  max-width: 384px;
+  height: 500px;
+  overflow: hidden;
+  border-radius: 1rem;
+  border: 4px solid #f472b6; /* pink-500 */
+  position: relative;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+}
+
+#photoDisplay {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 1rem;
+  transition: opacity 0.5s ease-in-out;
+}
+
+/* Player de música */
+#musicCover {
+  width: 64px;
+  height: 64px;
+  object-fit: cover;
+  border-radius: 0.5rem;
+}
+
+/* Efeito de onda */
+.wave-effect {
+  position: fixed;
+  border-radius: 50%;
+  background: rgba(255, 0, 100, 0.3); /* cor da onda */
+  pointer-events: none;
+  z-index: 999;
+}
+
+/* Responsividade */
+@media (min-width: 768px) {
+  #musicCover {
+    width: 64px;
+    height: 64px;
+  }
+}
